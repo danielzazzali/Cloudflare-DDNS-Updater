@@ -108,8 +108,8 @@ print("Token status: ", token_status)
 
 print("\nGetting DNS records...")
 dns_records = ddns_updater.get_dns_records()
-for record in dns_records:
-    print("DNS Record:", record)
+for dns_record in dns_records:
+    print("DNS Record:", dns_record)
 
 print("\nUpdating all DNS records...")
 update_results = ddns_updater.update_all_dns_records()
