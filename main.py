@@ -1,7 +1,8 @@
 import http.client
 import json
 import os
-import pprint
+import sys
+import time
 from dotenv import load_dotenv
 
 
@@ -90,9 +91,14 @@ class CloudflareDDNSUpdater:
 
 ddns_updater = CloudflareDDNSUpdater()
 
-pp = pprint.PrettyPrinter(indent=4)
+log_file = open("cloudflareDDNS.log", "a")
+original_stdout = sys.stdout
+sys.stdout = log_file
 
-print("Getting current IP...")
+print(150*'-')
+print("Execution started at: ", time.ctime())
+
+print("\nGetting current IP...")
 ip = ddns_updater.get_my_ip()
 print("Current IP: ", ip)
 
@@ -102,11 +108,15 @@ print("Token status: ", token_status)
 
 print("\nGetting DNS records...")
 dns_records = ddns_updater.get_dns_records()
-print("DNS Records:")
-pp.pprint(dns_records)
+for record in dns_records:
+    print("DNS Record:", record)
 
 print("\nUpdating all DNS records...")
 update_results = ddns_updater.update_all_dns_records()
 for record_name, result in update_results:
-    print("Update result for record:")
-    pp.pprint({record_name: result})
+    print("Update result for record:", {record_name: result})
+
+print(150*'-')
+
+sys.stdout = original_stdout
+log_file.close()
