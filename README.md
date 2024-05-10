@@ -44,6 +44,7 @@ This script automatically updates DNS records in Cloudflare to match your device
     - `ZONE_ID`: The ID of the Cloudflare zone where your DNS records are.
     - `PROXIED`: Whether the DNS records should be proxied by Cloudflare (true or false).
     - `TTL`: The time-to-live for the DNS records.
+    - `LOG_FILE_PATH`: The path to the log file where the script will write its output.
 
 
 ## Usage
