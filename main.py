@@ -92,7 +92,7 @@ class CloudflareDDNSUpdater:
 ddns_updater = CloudflareDDNSUpdater()
 
 log_file_path = os.getenv('LOG_FILE_PATH')
-log_file = open(f'{log_file_path}/Cloudflare-DDNS-Updater.log', "a")
+log_file = open(f'{log_file_path}Cloudflare-DDNS-Updater.log', "a")
 
 original_stdout = sys.stdout
 sys.stdout = log_file
