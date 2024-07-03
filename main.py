@@ -19,7 +19,7 @@ class CloudflareDDNSUpdater:
         self.api_path = os.getenv('API_PATH')
         self.zone_id = os.getenv('ZONE_ID')
         self.proxied = str2bool(os.getenv('PROXIED'))
-        self.ttl = os.getenv('TTL')
+        self.ttl = int(os.getenv('TTL'))
 
         self.headers = {
             'Content-Type': "application/json",
